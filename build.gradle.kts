@@ -36,11 +36,12 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.spring.boot.starter.data.jpa)
+    compileOnly(libs.spring.boot.starter.data.jpa)
 
     testImplementation(rootProject.libs.kotest.extensions.spring)
     testImplementation(rootProject.libs.kotest.runner.junit5)
     testImplementation(rootProject.libs.kotlin.logging)
+    testImplementation(rootProject.libs.spring.boot.starter.data.jpa)
 }
 
 tasks.withType<Test> {
