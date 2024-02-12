@@ -1,9 +1,9 @@
 name: Publish
 run-name: Publish library to GitHub Packages.
-on: [ push ]
-#  push:
-#    branches:
-#      - main
+on:
+  push:
+    branches:
+      - main
 jobs:
   publish:
     runs-on: ubuntu-latest
