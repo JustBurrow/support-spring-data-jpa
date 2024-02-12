@@ -38,10 +38,12 @@ repositories {
 dependencies {
     compileOnly(libs.spring.boot.starter.data.jpa)
 
-    testImplementation(rootProject.libs.kotest.extensions.spring)
-    testImplementation(rootProject.libs.kotest.runner.junit5)
-    testImplementation(rootProject.libs.kotlin.logging)
-    testImplementation(rootProject.libs.spring.boot.starter.data.jpa)
+    testImplementation(libs.com.mysql.connector)
+    testImplementation(libs.kotest.extensions.spring)
+    testImplementation(libs.kotest.runner.junit5)
+    testImplementation(libs.kotlin.logging)
+    testImplementation(libs.spring.boot.starter.data.jpa)
+    testImplementation(libs.spring.boot.starter.test)
 }
 
 tasks.withType<Test> {

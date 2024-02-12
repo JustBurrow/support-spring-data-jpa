@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/spring_data_jpa?connectionCollation=utf8mb4_0900_ai_ci&allowPublicKeyRetrieval=true&useSSL=false
+      username: user
+      password: user_password
