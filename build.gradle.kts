@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-    api(libs.spring.boot.starter.data.jpa)
+    implementation(libs.spring.boot.starter.data.jpa)
 
     testImplementation(rootProject.libs.kotest.extensions.spring)
     testImplementation(rootProject.libs.kotest.runner.junit5)
