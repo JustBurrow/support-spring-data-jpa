@@ -3,6 +3,7 @@ package kr.lul.support.spring.data.jpa.sample;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -27,15 +28,18 @@ public class TestEntity {
     private ZoneId zoneId;
     @Column(name = "`zdt`")
     private ZonedDateTime zonedDateTime;
+    @Column(name = "`offset_date_time`")
+    private OffsetDateTime offsetDateTime;
 
     public TestEntity() {
     }
 
-    public TestEntity(UUID uuid, Instant instant, ZoneId zoneId, ZonedDateTime zonedDateTime) {
+    public TestEntity(UUID uuid, Instant instant, ZoneId zoneId, ZonedDateTime zonedDateTime, OffsetDateTime offsetDateTime) {
         this.uuid = requireNonNull(uuid);
         this.instant = requireNonNull(instant);
         this.zoneId = requireNonNull(zoneId);
         this.zonedDateTime = requireNonNull(zonedDateTime);
+        this.offsetDateTime = requireNonNull(offsetDateTime);
     }
 
     public long getId() {
@@ -58,6 +62,10 @@ public class TestEntity {
         return zonedDateTime;
     }
 
+    public OffsetDateTime getOffsetDateTime() {
+        return offsetDateTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,6 +86,7 @@ public class TestEntity {
                 .add("instant=" + instant)
                 .add("zoneId=" + zoneId)
                 .add("zonedDateTime=" + zonedDateTime)
+                .add("offsetDateTime=" + offsetDateTime)
                 .toString();
     }
 }

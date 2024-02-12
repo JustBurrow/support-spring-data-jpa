@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.Rollback
 import org.springframework.transaction.annotation.Transactional
 import java.time.Instant
+import java.time.OffsetDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit.MILLIS
@@ -38,9 +39,10 @@ class MySqlTest : BehaviorSpec() {
             val instant = Instant.now().truncatedTo(MILLIS)
             val zoneId = ZoneId.systemDefault()
             val zdt = ZonedDateTime.now()
-            logger.info("[GIVEN] uuid=$uuid, instant=$instant, zoneId=$zoneId, zdt=$zdt")
+            val odt = OffsetDateTime.now()
+            logger.info("[GIVEN] uuid=$uuid, instant=$instant, zoneId=$zoneId, zdt=$zdt, odt=$odt")
 
-            val entity = TestEntity(uuid, instant, zoneId, zdt)
+            val entity = TestEntity(uuid, instant, zoneId, zdt, odt)
             logger.info("[GIVEN] entity=$entity")
 
             `when`("엔티티를 저장하면") {
@@ -53,6 +55,7 @@ class MySqlTest : BehaviorSpec() {
                     saved.instant shouldBe instant
                     saved.zoneId shouldBe zoneId
                     saved.zonedDateTime shouldBe zdt
+                    saved.offsetDateTime shouldBe odt
 
                     repository.flush()
                     val read = repository.findById(saved.id).get()
@@ -63,6 +66,7 @@ class MySqlTest : BehaviorSpec() {
                     read.instant shouldBe instant
                     read.zoneId shouldBe zoneId
                     read.zonedDateTime shouldBe zdt
+                    read.offsetDateTime shouldBe odt
                 }
             }
         }
