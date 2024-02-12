@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "kr.lul.support"
-version = "0.0.1"
+version = "0.0.2"
 
 val properties = Properties()
 properties.load(project.rootProject.file("local.properties").inputStream())
@@ -68,9 +68,9 @@ publishing {
         register<MavenPublication>("gpr") {
             from(components["java"])
 
-            groupId = "kr.lul.support"
+            groupId = "${project.group}"
             artifactId = rootProject.name
-            version = "0.0.1"
+            version = "${project.version}"
 
             pom {
                 scm {
