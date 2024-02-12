@@ -1,11 +1,11 @@
 plugins {
     java
-    id("org.springframework.boot") version "3.2.2"
-    id("io.spring.dependency-management") version "1.1.4"
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
 }
 
 group = "kr.lul.support"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -13,11 +13,15 @@ java {
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation(libs.spring.boot.starter.data.jpa)
+
+    testImplementation(rootProject.libs.kotest.extensions.spring)
+    testImplementation(rootProject.libs.kotest.runner.junit5)
+    testImplementation(rootProject.libs.kotlin.logging)
 }
 
 tasks.withType<Test> {
