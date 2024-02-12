@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:8.3.0
+    container_name: support_db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: spring_data_jpa
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    volumes:
+      - './db/ddl.sql:/docker-entrypoint-initdb.d/init.sql'
+    ports:
+      - '3306:3306'

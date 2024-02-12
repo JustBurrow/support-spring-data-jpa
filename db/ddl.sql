@@ -1,0 +1,23 @@
+SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
+SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0;
+SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'TRADITIONAL,ALLOW_INVALID_DATES';
+
+DROP SCHEMA IF EXISTS `spring_data_jpa`;
+
+CREATE SCHEMA `spring_data_jpa` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `spring_data_jpa`;
+
+CREATE TABLE `test`
+(
+    `id`               BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `uuid`             CHAR(36)        NOT NULL,
+    `instant`          BIGINT          NOT NULL,
+    `zone_id`          VARCHAR(32)     NOT NULL,
+    `zdt`              VARCHAR(64)     NOT NULL,
+    `offset_date_time` VARCHAR(64)     NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+SET SQL_MODE = @OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;

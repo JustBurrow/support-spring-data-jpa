@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "kr.lul.support"
-version = "0.0.1"
+version = "0.0.2"
 
 val properties = Properties()
 properties.load(project.rootProject.file("local.properties").inputStream())
@@ -21,6 +21,8 @@ properties.load(project.rootProject.file("local.properties").inputStream())
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+
+    withSourcesJar()
 }
 
 tasks.withType<KotlinCompile> {
@@ -38,10 +40,12 @@ repositories {
 dependencies {
     compileOnly(libs.spring.boot.starter.data.jpa)
 
-    testImplementation(rootProject.libs.kotest.extensions.spring)
-    testImplementation(rootProject.libs.kotest.runner.junit5)
-    testImplementation(rootProject.libs.kotlin.logging)
-    testImplementation(rootProject.libs.spring.boot.starter.data.jpa)
+    testImplementation(libs.com.mysql.connector)
+    testImplementation(libs.kotest.extensions.spring)
+    testImplementation(libs.kotest.runner.junit5)
+    testImplementation(libs.kotlin.logging)
+    testImplementation(libs.spring.boot.starter.data.jpa)
+    testImplementation(libs.spring.boot.starter.test)
 }
 
 tasks.withType<Test> {
@@ -66,9 +70,9 @@ publishing {
         register<MavenPublication>("gpr") {
             from(components["java"])
 
-            groupId = "kr.lul.support"
+            groupId = "${project.group}"
             artifactId = rootProject.name
-            version = "0.0.1"
+            version = "${project.version}"
 
             pom {
                 scm {
