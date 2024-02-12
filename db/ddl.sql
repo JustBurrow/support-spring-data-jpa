@@ -12,6 +12,7 @@ CREATE TABLE `test`
     `id`      BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `uuid`    CHAR(36)        NOT NULL,
     `instant` BIGINT          NOT NULL,
+    `zone_id` VARCHAR(32) NOT NULL,
     `zdt`     VARCHAR(64)     NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;

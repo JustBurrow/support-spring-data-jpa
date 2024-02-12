@@ -3,6 +3,7 @@ package kr.lul.support.spring.data.jpa.sample;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -22,15 +23,18 @@ public class TestEntity {
     private UUID uuid;
     @Column(name = "`instant`")
     private Instant instant;
+    @Column(name = "`zone_id`")
+    private ZoneId zoneId;
     @Column(name = "`zdt`")
     private ZonedDateTime zonedDateTime;
 
     public TestEntity() {
     }
 
-    public TestEntity(UUID uuid, Instant instant, ZonedDateTime zonedDateTime) {
+    public TestEntity(UUID uuid, Instant instant, ZoneId zoneId, ZonedDateTime zonedDateTime) {
         this.uuid = requireNonNull(uuid);
         this.instant = requireNonNull(instant);
+        this.zoneId = requireNonNull(zoneId);
         this.zonedDateTime = requireNonNull(zonedDateTime);
     }
 
@@ -44,6 +48,10 @@ public class TestEntity {
 
     public Instant getInstant() {
         return instant;
+    }
+
+    public ZoneId getZoneId() {
+        return zoneId;
     }
 
     public ZonedDateTime getZonedDateTime() {
@@ -68,6 +76,7 @@ public class TestEntity {
                 .add("id=" + id)
                 .add("uuid=" + uuid)
                 .add("instant=" + instant)
+                .add("zoneId=" + zoneId)
                 .add("zonedDateTime=" + zonedDateTime)
                 .toString();
     }
