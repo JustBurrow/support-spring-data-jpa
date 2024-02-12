@@ -21,6 +21,8 @@ properties.load(project.rootProject.file("local.properties").inputStream())
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+
+    withSourcesJar()
 }
 
 tasks.withType<KotlinCompile> {
