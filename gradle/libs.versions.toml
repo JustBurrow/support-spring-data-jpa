@@ -2,15 +2,13 @@
 boot = "3.2.2"
 dependency-management = "1.1.4"
 kotlin = "1.9.22"
-kotest = "5.8.0"
-kotlin-logging = "3.0.5"
 
 [libraries]
 com-mysql-connector = { module = "com.mysql:mysql-connector-j", version = "8.3.0" }
 kotest-extensions-spring = { group = "io.kotest.extensions", name = "kotest-extensions-spring", version = "1.1.3" }
-kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
-kotlin-logging = { module = "io.github.microutils:kotlin-logging", version.ref = "kotlin-logging" }
-kr-lul-semantic-version = { module = "kr.lul:semantic-version-kotlinmultiplatform", version = "0.0.1" }
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version = "5.8.0" }
+kotlin-logging = { module = "io.github.microutils:kotlin-logging", version = "3.0.5" }
+kr-lul-semantic-version = { module = "kr.lul:semantic-version-jvm", version = "0.0.1" }
 spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "boot" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "boot" }
 
