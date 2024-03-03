@@ -63,6 +63,14 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.jar {
+    enabled = true
+}
+
+tasks.bootJar {
+    enabled = false
+}
+
 publishing {
     repositories {
         maven {
