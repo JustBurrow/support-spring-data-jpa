@@ -48,11 +48,6 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
 dependencies {
     api(libs.kr.lul.semantic.version)
 
@@ -66,7 +61,7 @@ dependencies {
     testImplementation(libs.spring.boot.starter.test)
 }
 
-tasks.withType<Test> {
+tasks.test {
     useJUnitPlatform()
 }
 
