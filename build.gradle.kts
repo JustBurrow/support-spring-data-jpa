@@ -13,10 +13,26 @@ plugins {
 }
 
 group = "kr.lul.support"
-version = "0.0.2"
+version = "0.0.3"
 
 val properties = Properties()
 properties.load(project.rootProject.file("local.properties").inputStream())
+
+repositories {
+    google()
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url = uri("https://maven.pkg.github.com/JustBurrow/packages")
+
+        credentials {
+            username = properties["github.actor"] as String?
+                ?: System.getenv("GITHUB_ACTOR")
+            password = properties["github.token"] as String?
+                ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -38,6 +54,8 @@ repositories {
 }
 
 dependencies {
+    api(libs.kr.lul.semantic.version)
+
     compileOnly(libs.spring.boot.starter.data.jpa)
 
     testImplementation(libs.com.mysql.connector)
