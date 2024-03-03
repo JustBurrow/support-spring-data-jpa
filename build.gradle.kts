@@ -50,14 +50,12 @@ tasks.withType<KotlinCompile> {
 
 dependencies {
     api(libs.kr.lul.semantic.version)
-
-    compileOnly(libs.spring.boot.starter.data.jpa)
+    api(libs.spring.boot.starter.data.jpa)
 
     testImplementation(libs.com.mysql.connector)
     testImplementation(libs.kotest.extensions.spring)
     testImplementation(libs.kotest.runner.junit5)
     testImplementation(libs.kotlin.logging)
-    testImplementation(libs.spring.boot.starter.data.jpa)
     testImplementation(libs.spring.boot.starter.test)
 }
 
