@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "kr.lul.support"
-version = "0.0.3"
+version = "0.0.4"
 
 val properties = Properties()
 properties.load(project.rootProject.file("local.properties").inputStream())
