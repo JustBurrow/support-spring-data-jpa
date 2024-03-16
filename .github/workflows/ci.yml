@@ -19,8 +19,16 @@ jobs:
           gradle-version: wrapper
       - name: Setup config
         run: cp .github/workflows/local.properties local.properties
+      - name: Prepare DB
+        uses: isbang/compose-action@v1.5.1
+        with:
+          compose-file: docker-compose.yml
+          down-flags: --volumes
       - name: Run test
         run: ./gradlew test --rerun-tasks --continue
+        env:
+          GITHUB_ACTOR: ${{ secrets.PUBLISH_ACTOR }}
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
       - if: success() || failure()
         uses: actions/upload-artifact@v4
         name: Upload test report

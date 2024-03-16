@@ -30,7 +30,7 @@ class EmbeddableVersion(
     val preRelease: String? = null,
     @field:Column(name = COL_BUILD)
     val build: String? = null
-) {
+) : Comparable<EmbeddableVersion> {
     @field:Transient
     val version = Version(
         Core(major, minor, patch),
@@ -53,6 +53,8 @@ class EmbeddableVersion(
         version.preRelease?.toString(),
         version.build?.toString()
     )
+
+    override fun compareTo(other: EmbeddableVersion): Int = version.compareTo(other.version)
 
     override fun equals(other: Any?) = this === other || (
             other is EmbeddableVersion
