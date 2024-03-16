@@ -19,6 +19,11 @@ jobs:
           gradle-version: wrapper
       - name: Setup config
         run: cp .github/workflows/local.properties local.properties
+      - name: Prepare DB
+        uses: isbang/compose-action@v1.5.1
+        with:
+          compose-file: docker-compose.yml
+          down-flags: --volumes
       - name: Run test
         run: ./gradlew test --rerun-tasks --continue
         env:
